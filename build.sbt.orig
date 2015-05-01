@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 name := "reactive-week3"
+=======
+name := "CourseraCodeSamplesReactiveProgramming"
+>>>>>>> 4c79d84ae71b8c3a0b731b984c81e12d61c513ac
 
 version := "1.0"
 
 scalaVersion := "2.11.6"
+<<<<<<< HEAD
+    
+=======
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
@@ -15,3 +22,4 @@ libraryDependencies ++= Seq(
     "com.typesafe.akka" %% "akka-actor" % "2.3.10"
 )
 
+>>>>>>> 4c79d84ae71b8c3a0b731b984c81e12d61c513ac

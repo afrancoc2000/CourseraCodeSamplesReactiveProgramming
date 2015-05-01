@@ -1,5 +1,7 @@
+<<<<<<< HEAD
 logLevel := Level.Warn
-
+=======
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "3.0.0")
 
 addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.5.2")
+>>>>>>> 4c79d84ae71b8c3a0b731b984c81e12d61c513ac

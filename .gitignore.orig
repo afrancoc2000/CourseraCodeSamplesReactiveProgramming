@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 *.class
 *.log
 
@@ -39,6 +40,14 @@ project/plugins/project/
 # JIRA plugin
 atlassian-ide-plugin.xml
 
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+=======
+# made by sbt
+target/
+
 # made by eclipse
 # you can create the eclipse project file by running `sbt eclipse`
 .cache
@@ -46,12 +55,8 @@ atlassian-ide-plugin.xml
 .project
 .settings
 
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-
 # made by idea
 # you can create the intellij idea project file by running `sbt gen-idea`
 .idea
 .idea_modules
+>>>>>>> 4c79d84ae71b8c3a0b731b984c81e12d61c513ac
