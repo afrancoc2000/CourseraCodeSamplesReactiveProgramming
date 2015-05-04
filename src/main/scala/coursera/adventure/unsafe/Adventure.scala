@@ -8,7 +8,7 @@ import coursera.extensions
 object Adventure {
   def apply(): Adventure = new Adventure(){
     var eatenByMonster: Boolean = math.random < 0.5
-    val treasureCost: Int = 42
+    var treasureCost: Int = 42
   }
 }
 
@@ -16,7 +16,7 @@ trait Adventure {
   import extensions._
 
   var eatenByMonster: Boolean
-  val treasureCost: Int
+  var treasureCost: Int
 
   def collectCoins(): List[Coin] = {
     if (eatenByMonster) throw new GameOver("Ooops")
@@ -24,8 +24,8 @@ trait Adventure {
   }
 
   def buyTreasure(coins: List[Coin]): Treasure = {
-    coins.sumBy(x => x.value) < treasureCost
-    if (true) throw new GameOver("Nice try!")
+    val enoughCoins = coins.map(x => x.value).sum > treasureCost
+    if (!enoughCoins) throw new GameOver("Nice try!")
     Diamond()
   }
 

@@ -5,15 +5,20 @@ import scala.concurrent.{ExecutionContext, Future}
 import ExecutionContext.Implicits.global
 import scala.collection.immutable.Queue
 import akka.serialization._
-import coursera.socket.EmailMessage
+import coursera.socket.{SocketException, EmailMessage}
 
 object Socket {
-  def apply(): Socket = new Socket(){}
+  def apply(): Socket = new Socket(){
+    var memoryError: Boolean = true
+    var sendingError: Boolean = true
+  }
 }
 
 trait Socket {
 
-  val serialization: Serialization = ???
+//  val serialization: Serialization = ???
+  var memoryError: Boolean
+  var sendingError: Boolean
 
   val memory = Queue[EmailMessage](
     EmailMessage(from = "Erik", to = "Roland"),
@@ -23,14 +28,23 @@ trait Socket {
 
   def readFromMemory(): Future[Array[Byte]] = {
     Future {
-      val email = memory.dequeue
-      val serializer = serialization.findSerializerFor(email)
-      serializer.toBinary(email)
+//      val email = memory.dequeue
+//      val serializer = serialization.findSerializerFor(email)
+//      serializer.toBinary(email)
+
+      Thread.sleep(3000)
+      if(memoryError) throw new SocketException("Ups, not enough memory")
+      new Array[Byte](10).map(_ => (math.random * 128).toByte)
     }
   }
 
   def sendToEurope(packet: Array[Byte]): Future[Array[Byte]] = {
-    Http("mail.server.eu", Request(packet)).filter(_.isOK).map(_.body)
+//    Http("mail.server.eu", Request(packet)).filter(_.isOK).map(_.body)
+    Future{
+      Thread.sleep(6000)
+      if(sendingError) throw new SocketException("Sorry, the trip didn't go well")
+      packet
+    }
   }
 
   def sendTo(url: String, packet: Array[Byte]): Future[Array[Byte]] =
